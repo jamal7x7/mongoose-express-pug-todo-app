@@ -53,9 +53,10 @@ button
     color: yellow
     border-color: #ffffff00
     grid-area: button
+    color: white
 
 .menu 
-    background-color: white
+    background-color: #444999
     padding: 10px
     text-align: center
     display: grid
@@ -68,6 +69,50 @@ button
         grid-area: m
         a 
             width: 100px
+            color: white
+    
+
+.register-container
+    form
+        display: grid
+        grid-gap: 10px
+        margin: auto
+        grid-template-columns: 4px 9fr  3fr 4px 
+        grid-template-rows: 4px 64px 4px 
+        grid-template-areas: ' . . . . ' '. addTodo button .' '. . . .' 
+        margin-top: 50px
+        background-color: #00000022 
+        height: 90px
+        width: 600px 
+        border-radius: 14px
+        input
+            font-size: 20px
+            font-weight: 700
+            grid-area: addTodo
+            padding: 20px
+            background-color: #00000022
+            outline: none
+            border-color: #ffffff00
+            color: #999FFF
+        button
+            grid-area: button
+            border-radius: 10px
+
+.todo
+    font-size: 20px
+    text-align: left
+    margin: 10px auto 
+    padding: 0 30px
+    background-color: #00000022
+    outline: none
+    border-color: #ffffff00
+    color: #999FFF 
+    width: 600px 
+    box-sizing: border-box
+    .t
+        margin-left: 16px
+    .n
+        color: #FFFFFF77
     
 
 

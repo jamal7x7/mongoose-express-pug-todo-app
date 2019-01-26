@@ -9,6 +9,7 @@ html(lang="en")
 
     body
         h1 Add Todo Page
+        h3 Hi, #{email}
         .menu
             .m
                 a(href="/home") HOME 
@@ -17,10 +18,12 @@ html(lang="en")
                 a(href="/login") LOGIN 
                 a(href="/logout")  LOGOUT 
 
-        
-        form(action="/addTodo" method="POST")
-            input(type="text", name="name")
-            button(type="submit") ADD TODO
-        
-        h2 #{name}
-        h3 #{email}
+        .register-container 
+            form(action="/addTodo" method="POST")
+                input(type="text" name="name" autofocus)
+                button(type="submit") ADD TODO
+
+        each t, i in todosData
+            .todo
+                h3(class="n")= i
+                h3(class="t")=  t.text

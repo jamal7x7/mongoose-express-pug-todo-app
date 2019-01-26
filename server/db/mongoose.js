@@ -24,10 +24,14 @@ db.once('open', function() {
 	console.log("we're connected!")
 })
 
-const Todo = mongoose.model('todos', {
+let todoSchema = new mongoose.Schema({
 	text: String,
-	completed: Boolean
+	completed: Boolean,
+	userId: String
 })
+
+const Todo = mongoose.model('todos', todoSchema)
+
 // const t1 = new Todo({
 // 	text: 'Rayane',
 // 	completed: false

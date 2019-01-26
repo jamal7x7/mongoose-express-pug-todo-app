@@ -37,7 +37,7 @@ app.use(
 	})
 )
 
-// LOGS
+// LOGS TODO:
 const util = require('util')
 app.use((req, res, next) => {
 	// console.log('shortId: ', shortid.generate())
@@ -92,7 +92,7 @@ app.get('/home', (req, res) => {
 // LOGIN ROUTE
 app.get('/login', (req, res) => {
 	res.render('login', {
-		name: t
+		name: req.session.firstName
 	})
 })
 
@@ -106,7 +106,7 @@ app.post('/login', (req, res, next) => {
 // POST ROUTE
 app.get('/register', (req, res) => {
 	res.render('register', {
-		name: t
+		name: req.session.firstName
 	})
 })
 
@@ -130,6 +130,7 @@ app.post('/register', (req, res, next) => {
 app.get('/', loggedIn, (req, res) => {
 	res.redirect('home')
 })
+
 // LOGGED ROUTE
 app.get('/logged', (req, res) => {
 	res.redirect('addTodo')
@@ -146,10 +147,7 @@ app.get('/logout', (req, res) => {
 	})
 })
 
-let t = []
-
-// YOUR APP
-app.get('/addTodo', loggedIn, (req, res) => {
+app.get('/updateUser', loggedIn, (req, res) => {
 	User.findOneAndUpdate(
 		{
 			email: 'j' // search query
@@ -172,14 +170,27 @@ app.get('/addTodo', loggedIn, (req, res) => {
 		})
 
 	res.render('addTodo', {
-		name: t,
+		email: req.session.email
+	})
+})
+// YOUR APP
+let todosArr = [
+	{
+		text: 'run',
+		completed: false,
+		userId: '01'
+	}
+]
+app.get('/addTodo', loggedIn, (req, res) => {
+	res.render('addTodo', {
+		todosData: todosArr,
 		email: req.session.email
 	})
 })
 
 app.post('/addTodo', (req, res) => {
-	t = [...t, req.body.name]
-	// console.log(t)
+	todosArr = [...todosArr, { text: req.body.name }]
+
 	res.redirect('addTodo')
 })
 
