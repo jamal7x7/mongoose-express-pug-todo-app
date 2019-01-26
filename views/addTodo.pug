@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        link(rel="stylesheet", href="style.css" , type="text/css")
+        title Document
+
+    body
+        h1 Add Todo Page
+        .menu
+            .m
+                a(href="/home") HOME 
+                a(href="/addTodo")  ADDTODO 
+                a(href="/register") REGISTER 
+                a(href="/login") LOGIN 
+                a(href="/logout")  LOGOUT 
+
+        
+        form(action="/addTodo" method="POST")
+            input(type="text", name="name")
+            button(type="submit") ADD TODO
+        
+        h2 #{name}
+        h3 #{email}
