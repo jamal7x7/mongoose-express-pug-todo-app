@@ -20,7 +20,7 @@ html(lang="en")
 
         .register-container 
             form(action="/addTodo" method="POST")
-                input(type="text" name="name" autofocus)
+                input(type="text" name="text" autofocus)
                 button(type="submit") ADD TODO
 
         each t, i in todosData

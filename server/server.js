@@ -189,7 +189,14 @@ app.get('/addTodo', loggedIn, (req, res) => {
 })
 
 app.post('/addTodo', (req, res) => {
-	todosArr = [...todosArr, { text: req.body.name }]
+	req.session.text = req.body.text
+	todosArr = [...todosArr, { text: req.session.text }]
+
+	const t1 = new Todo({
+		text: req.session.text,
+		completed: false
+	})
+	t1.save().then(t => console.log('todo saved!'))
 
 	res.redirect('addTodo')
 })
